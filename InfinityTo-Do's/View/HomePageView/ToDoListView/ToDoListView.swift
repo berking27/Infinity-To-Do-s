@@ -13,10 +13,9 @@ struct ToDoListView: View {
      @State private var isTapped = false
      @StateObject var viewModel = ToDoListViewModel()
      @FirestoreQuery var items: [ToDoListItem]
-     //
      
      init(userId: String){
-          self._items = FirestoreQuery(collectionPath: "users\(userId)todos")
+          self._items = FirestoreQuery(collectionPath: "users/\(userId)/todos")
      }
      
      var body: some View {
