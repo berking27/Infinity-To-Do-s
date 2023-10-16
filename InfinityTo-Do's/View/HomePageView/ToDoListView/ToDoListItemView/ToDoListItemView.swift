@@ -13,23 +13,30 @@ struct ToDoListItemView: View {
      let item: ToDoListItem
      
     var body: some View {
-         HStack{
-              VStack{
-                   Text(item.title)
-                        .bold()
-                        .font(.title2)
-                        .foregroundColor(Color.appPurple)
-              }
-              Spacer()
-              
-              Button {
-                   viewModel.toggle(item: item)
-              } label: {
-                   Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-              }
-
-         }
          
+              HStack{
+                   VStack{
+                        Text(item.title)
+                             .bold()
+                             .font(.title2)
+                             .foregroundColor(Color.black)
+                   }
+                   Spacer()
+                   
+                   Button {
+                        viewModel.toggle(item: item)
+                   } label: {
+                        Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                             .foregroundColor(Color.appTeal)
+                   }
+
+              }
+              .frame(maxWidth: .infinity)
+              .padding(.horizontal, 16)
+              .padding(.vertical, 4)
+              .background(.regularMaterial)
+              .cornerRadius(8)
+              .padding(.horizontal, 4)
     }
 }
 

@@ -18,10 +18,11 @@ class FirebaseManager: NetworkManagerProtocol{
      
      let db = Firestore.firestore()
      
-     @Published var userSession : FirebaseAuth.User?
-     @Published var currentUser : User?
-     @Published var errorMessage : Error?
-     @Published var showErrorAlert : Bool = false
+     @Published var userSession: FirebaseAuth.User?
+     @Published var currentUser: User?
+     @Published var errorMessage: Error?
+     @Published var showErrorAlert: Bool = false
+
      
      private init(){
           self.userSession = Auth.auth().currentUser
@@ -85,34 +86,25 @@ class FirebaseManager: NetworkManagerProtocol{
           
      }
      
+//     func saveItems(title: String){
+//          guard let uid = FirebaseManager.shared.currentUser?.id else{
+//               return
+//          }
+//          let newId = UUID().uuidString
+//          let newItem = ToDoListItem(id: newId,
+//                                     title: title,
+//                                     isDone: false)
+//          
+//          db.collection("users")
+//               .document(uid)
+//               .collection("todos")
+//               .document("123")
+//               .setData([String : Any])
+//     }
+     
+     
      func fetchUser(completion: @escaping (User?) -> Void) {
-          //          guard let uid = FirebaseManager.shared.userSession?.uid else {
-          //               completion(nil)
-          //               return
-          //          }
-          //
-          //          FirebaseManager.shared.db.collection("users").document(uid).getDocument { snapshot, error in
-          //               if error != nil {
-          //                    Log.error("Failed to fetch user data")
-          //                    completion(nil)
-          //                    return
-          //               }
-          //
-          //               guard let data = snapshot?.data() else {
-          //                    completion(nil)
-          //                    return
-          //               }
-          //
-          //               let uid = data["uid"] as? String ?? ""
-          //               let email = data["email"] as? String ?? ""
-          //               let firstName = data["firstName"] as? String ?? ""
-          //               let lastName = data["lastName"] as? String ?? ""
-          //               let VD_NO = data["vdNo"] as? String ?? ""
-          //
-          //               let user = User(id: uid, email: email, firstName: firstName, lastName: lastName, VD_NO: VD_NO)
-          //               completion(user)
-          //               Log.info("Completion done by user data")
-          //          }
+ 
      }
 }
 
