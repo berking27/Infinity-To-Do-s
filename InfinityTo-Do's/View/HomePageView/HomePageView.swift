@@ -12,25 +12,29 @@ struct HomePageView: View {
      @StateObject var viewModel = HomePageViewModel()
      
     var body: some View {
-         NavigationView{
-              TabView {
-                   ToDoListView(userId: FirebaseManager.shared.currentUser?.id ?? "")
-                   .tabItem {
-                        Label("To-Do",systemImage: "infinity")
-                   }
-                   
-                   VStack{
-                        Button {
-                             viewModel.signOutTapped()
-                        } label: {
-                             Text("Sign Out")
+         if viewModel.isSignedIn(){
+              NavigationView{
+                   TabView {
+                        ToDoListView(userId: FirebaseManager.shared.userSession?.uid ?? "")
+                             .tabItem {
+                                  Label("To-Do",systemImage: "infinity")
+                             }
+                        
+                        VStack{
+                             Button {
+                                  viewModel.signOutTapped()
+                             } label: {
+                                  Text("Sign Out")
+                             }
                         }
+                        .tabItem {
+                             Label("Settings",systemImage: "gear")
+                        }
+                        
                    }
-                   .tabItem {
-                        Label("Settings",systemImage: "gear")
-                   }
-                   
               }
+         } else {
+              LoginView()
          }
     }
 }

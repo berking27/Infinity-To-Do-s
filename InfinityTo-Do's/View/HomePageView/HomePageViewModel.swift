@@ -14,4 +14,8 @@ class HomePageViewModel: ObservableObject{
           Log.info("Successfully sign out")
           AppState.shared.navigation = .login
      }
+     
+     func isSignedIn() -> Bool{
+          return FirebaseManager.shared.isThereAnyUser()
+     }
 }
