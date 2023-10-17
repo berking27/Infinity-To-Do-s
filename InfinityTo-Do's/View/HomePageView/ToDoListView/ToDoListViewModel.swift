@@ -14,7 +14,7 @@ class ToDoListViewModel: ObservableObject{
      init() {}
      
      func delete(id: String){
-          
+          FirebaseManager.shared.deleteItems(id: id)
      }
      
 }

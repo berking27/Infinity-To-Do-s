@@ -25,17 +25,21 @@ struct ToDoListView: View {
                ZStack{
                     bgView()
                     VStack{
-                         
-                         ForEach(items, id: \.id) { item in
-                              ToDoListItemView(item: item)
-                                   .swipeActions {
-                                        Button("Delete") {
-                                             viewModel.delete(id: item.id)
+                         List{
+                              ForEach(items, id: \.id) { item in
+                                   ToDoListItemView(item: item)
+                                        .swipeActions{
+                                             Button(role: .destructive) {
+                                                  withAnimation(.linear(duration: 0.4)){
+                                                       viewModel.delete(id: item.id)
+                                                  }
+                                             } label :{
+                                                  Label("Delete", systemImage: "trash")
+                                             }
                                         }
-                                        .background(Color.red)
-                                   }
+                              }
                          }
-                         Spacer()
+                         .listStyle(PlainListStyle())
                     }
                     .navigationTitle("To-Do-List")
                     .toolbar {

@@ -64,6 +64,18 @@ class FirebaseManager: NetworkManagerProtocol{
           Log.info("User successfully Sign out")
      }
      
+     func deleteItems(id: String){
+          guard let userId = userSession?.uid else{
+               Log.error("NO USER IF FOUND!")
+               return
+          }
+          db.collection("users")
+              .document(userId)
+              .collection("todos")
+              .document(id)
+              .delete()
+     }
+     
      func saveToDoS(title: String, isDone: Bool){
           
           //getCurrent user id
@@ -86,22 +98,16 @@ class FirebaseManager: NetworkManagerProtocol{
           
      }
      
-//     func saveItems(title: String){
-//          guard let uid = FirebaseManager.shared.currentUser?.id else{
-//               return
-//          }
-//          let newId = UUID().uuidString
-//          let newItem = ToDoListItem(id: newId,
-//                                     title: title,
-//                                     isDone: false)
-//          
-//          db.collection("users")
-//               .document(uid)
-//               .collection("todos")
-//               .document("123")
-//               .setData([String : Any])
-//     }
-     
+     func toggleToDos(itemCopy: ToDoListItem){
+          guard let uid = userSession?.uid else{
+               return
+          }
+          db.collection("users")
+               .document(uid)
+               .collection("todos")
+               .document(itemCopy.id)
+               .setData(itemCopy.asDictionary())
+     }
      
      func fetchUser(completion: @escaping (User?) -> Void) {
  
