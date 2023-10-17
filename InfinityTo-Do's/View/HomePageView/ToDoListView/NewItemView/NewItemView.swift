@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewItemView: View {
      
-     @StateObject var viewModel = AddNewToDoListViewModel()
+     @StateObject var viewModel = NewItemViewModel()
      @Binding var newItemPresented: Bool
      
      

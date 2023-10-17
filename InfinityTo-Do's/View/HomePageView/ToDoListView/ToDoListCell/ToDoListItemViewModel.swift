@@ -12,7 +12,10 @@ class ToDoListItemViewModel: ObservableObject{
      init() {}
      
      func toggle(item: ToDoListItem){
+          var itemCopy = item
+          itemCopy.setDone(!item.isDone)
           
+          FirebaseManager.shared.toggleToDos(itemCopy: itemCopy)
      }
      
 }

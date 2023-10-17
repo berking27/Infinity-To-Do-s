@@ -116,7 +116,6 @@
 		AA3F3BB82A95E73200C3F9F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA2DDD662ADD557E00346CA9 /* NewItemView */,
 				AA3F3BC32A95EEE900C3F9F2 /* SplashScreenView */,
 				AA3F3BC42A95EEF300C3F9F2 /* LoginView */,
 				AA3F3BC52A95EEF900C3F9F2 /* HomePageView */,
@@ -150,7 +149,6 @@
 				AA3F3BC62A95EF4000C3F9F2 /* HomePageView.swift */,
 				AABE47E72A98C9B900A022DC /* HomePageViewModel.swift */,
 				AAC29D5E2A9C84CA00820018 /* ToDoListView */,
-				AAC29D682A9C896C00820018 /* AddNewToDoListView */,
 				AAC29D5F2A9C84E600820018 /* ProfileView */,
 			);
 			path = HomePageView;
@@ -200,6 +198,7 @@
 				AA3F3BBB2A95E78700C3F9F2 /* RootView.swift */,
 				AA3F3BB72A95E72C00C3F9F2 /* Model */,
 				AA3F3BB82A95E73200C3F9F2 /* View */,
+				AAC29D682A9C896C00820018 /* AddNewToDoListView */,
 				AA3F3BCA2A95EF8F00C3F9F2 /* NetworkManager */,
 				AA3F3BD52A961AEB00C3F9F2 /* Extensions */,
 				AA97C4B32A988D7F008C09AC /* Resources */,
@@ -238,7 +237,8 @@
 			children = (
 				AAC29D5A2A9C81E900820018 /* ToDoListView.swift */,
 				AAC29D5C2A9C84C600820018 /* ToDoListViewModel.swift */,
-				AACA44542A9DCA9200EC93D7 /* ToDoListItemView */,
+				AACA44542A9DCA9200EC93D7 /* ToDoListCell */,
+				AA2DDD662ADD557E00346CA9 /* NewItemView */,
 			);
 			path = ToDoListView;
 			sourceTree = "<group>";
@@ -268,13 +268,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AACA44542A9DCA9200EC93D7 /* ToDoListItemView */ = {
+		AACA44542A9DCA9200EC93D7 /* ToDoListCell */ = {
 			isa = PBXGroup;
 			children = (
 				AAC29D722A9CDA7000820018 /* ToDoListItemView.swift */,
 				AACA44522A9DCA8E00EC93D7 /* ToDoListItemViewModel.swift */,
 			);
-			path = ToDoListItemView;
+			path = ToDoListCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

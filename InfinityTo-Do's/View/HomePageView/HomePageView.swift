@@ -15,22 +15,23 @@ struct HomePageView: View {
          if viewModel.isSignedIn(){
               NavigationView{
                    TabView {
-                        ToDoListView(userId: FirebaseManager.shared.userSession?.uid ?? "")
+                        if let userId = FirebaseManager.shared.userSession?.uid{
+                             ToDoListView(userId: userId)
+                                  .tabItem {
+                                       Label("To-Do",systemImage: "infinity")
+                                  }
+                             VStack{
+                                  Button {
+                                       viewModel.signOutTapped()
+                                  } label: {
+                                       Text("Sign Out")
+                                  }
+                             }
                              .tabItem {
-                                  Label("To-Do",systemImage: "infinity")
+                                  Label("Settings",systemImage: "gear")
                              }
-                        
-                        VStack{
-                             Button {
-                                  viewModel.signOutTapped()
-                             } label: {
-                                  Text("Sign Out")
-                             }
+                             
                         }
-                        .tabItem {
-                             Label("Settings",systemImage: "gear")
-                        }
-                        
                    }
               }
          } else {

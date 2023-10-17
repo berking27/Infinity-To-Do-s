@@ -6,15 +6,10 @@
 //
 
 import Foundation
-import FirebaseAuth
-import FirebaseFirestore
-import SwiftUI
-
 
 class AddNewToDoListViewModel: ObservableObject{
      
      @Published var title = ""
-//     @Published var color: Color = .blue
      @Published var isDone = false
      @Published var showAlert = false
      
