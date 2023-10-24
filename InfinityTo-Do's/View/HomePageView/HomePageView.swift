@@ -21,11 +21,7 @@ struct HomePageView: View {
                                        Label("To-Do",systemImage: "infinity")
                                   }
                              VStack{
-                                  Button {
-                                       viewModel.signOutTapped()
-                                  } label: {
-                                       Text("Sign Out")
-                                  }
+                              ProfileView()
                              }
                              .tabItem {
                                   Label("Settings",systemImage: "gear")
@@ -33,19 +29,16 @@ struct HomePageView: View {
                              
                         }
                    }
+                   .tabViewStyle(backgroundColor: .white,
+                                 itemColor: .black,
+                                 selectedItemColor: .appNavyBlueColor,
+                                 badgeColor: .red)
+                   
               }
          } else {
               LoginView()
          }
     }
-}
-
-//MARK: - Settings
-
-private var settingsViewTabView: some View{
-     ZStack{
-          
-     }
 }
 
 

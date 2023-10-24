@@ -29,6 +29,7 @@ struct NewItemView: View {
                                    TextField("What To-Do", text: $viewModel.title)
                                         .foregroundColor(.white)
                                         .textFieldStyle(.plain)
+                                        .font(.system(size: 16).bold())
                               }
                               
                               //                             ColorPicker("Color Picker",
@@ -38,7 +39,7 @@ struct NewItemView: View {
                          .frame(maxWidth: .infinity)
                          .padding(.horizontal, 40)
                          .padding(.vertical, 20)
-                         .background(Color.appDarkMint)
+                         .background(Color.appLightBlue.opacity(0.8))
                          .cornerRadius(4)
                          
                          Button {
@@ -51,10 +52,11 @@ struct NewItemView: View {
                          } label: {
                               Text("Add New Item")
                                    .foregroundColor(.white)
+                                   .bold()
                          }
                          .padding(.horizontal, 24)
                          .padding(.vertical, 16)
-                         .background(Color.appPurple)
+                         .background(Color.appNavyBlueColor)
                          .cornerRadius(8)
                          
                          
@@ -71,7 +73,7 @@ struct NewItemView: View {
      
      private func bgRect() -> some View{
           Rectangle()
-               .foregroundStyle(.linearGradient(colors: [Color.appPurple,Color.black, Color.appPurple], startPoint: .top, endPoint: .bottom))
+               .foregroundStyle(.linearGradient(colors: [Color.appLightBlue,Color.black, Color.appLightBlue], startPoint: .top, endPoint: .bottom))
                .frame(maxWidth: .infinity)
                .ignoresSafeArea()
           

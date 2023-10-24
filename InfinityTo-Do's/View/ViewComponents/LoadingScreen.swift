@@ -15,7 +15,7 @@ struct LoadingScreen: View {
         VStack {
             Image(systemName: isTapped ? "infinity" : "plus")
                 .font(.system(size: isBigger ? 50 * 1.3 : 50))
-                .foregroundColor(.appDarkMint)
+                .foregroundColor(.appOceanBlue)
                 .rotationEffect(.degrees(isTapped ? 180 : 0))
                 .animation(
                     Animation.easeInOut(duration: 0.5)

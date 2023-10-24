@@ -22,27 +22,30 @@ struct LoginViewCell: View {
                HStack{
                     if isSecureField{
                          SecureField(title, text: $text)
-                              .foregroundColor(.black)
+                              .foregroundColor(.appNavyBlueColor)
                               .textFieldStyle(.plain)
+                              .autocapitalization(.none)
                          Image(systemName: systemImage)
                               .imageScale(.large)
-                              .foregroundColor(.black)
+                              .foregroundColor(.appDarkPurple)
                     }else{
                          TextField(title, text: $text)
-                              .foregroundColor(.black)
+                              .foregroundColor(.appNavyBlueColor)
                               .textFieldStyle(.plain)
+                              .autocapitalization(.none)
                          Image(systemName: systemImage)
                               .imageScale(.large)
-                              .foregroundColor(.black)
+                              .foregroundColor(.appDarkPurple)
                     }
                }
                .frame(maxWidth: .infinity)
-               .padding(.horizontal, 40)
-               .padding(.vertical, 20)
-               .background(Color.appDarkMint)
-               .cornerRadius(16)
+               .foregroundColor(.purple)
+               .padding(.horizontal, 12)
+               .padding(.vertical, 16)
+               .background(Color.white)
+               .cornerRadius(4)
           }
-          .padding(.horizontal, 16)
+          .padding(.horizontal, 12)
      }
 }
 

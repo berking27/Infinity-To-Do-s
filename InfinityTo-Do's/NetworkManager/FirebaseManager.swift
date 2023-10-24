@@ -110,7 +110,31 @@ class FirebaseManager: NetworkManagerProtocol{
      }
      
      func fetchUser(completion: @escaping (User?) -> Void) {
- 
+          guard let uid = userSession?.uid else {
+               completion(nil)
+               return
+          }
+          
+          db.collection("users").document(uid).getDocument { snapshot, error in
+               if error != nil {
+                    Log.error("Failed to fetch user data")
+                    completion(nil)
+                    return
+               }
+               
+               guard let data = snapshot?.data() else {
+                    completion(nil)
+                    return
+               }
+               
+               let uid = data["uid"] as? String ?? ""
+               let email = data["email"] as? String ?? ""
+               let name = data["name"] as? String ?? ""
+               
+               let user = User(id: uid, email: email, name: name)
+               completion(user)
+               Log.info("Completion done fetching user data")
+          }
      }
 }
 

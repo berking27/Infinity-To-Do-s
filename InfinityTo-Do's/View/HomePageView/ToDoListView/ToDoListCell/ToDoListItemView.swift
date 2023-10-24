@@ -19,13 +19,14 @@ struct ToDoListItemView: View {
                     viewModel.toggle(item: item)
                } label: {
                     Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                         .font(.system(size: 24).bold())
                }
                
                VStack{
                     Text(item.title)
                          .bold()
                          .font(.title2)
-                         .foregroundColor(Color.black)
+                         .foregroundColor(.white)
                }
                Spacer()
 
@@ -34,7 +35,7 @@ struct ToDoListItemView: View {
           .cornerRadius(8)
           .padding(.horizontal, 4)
           .listRowBackground(Color.clear)
-          .foregroundColor(.white)
+          .foregroundColor(.black)
      }
 }
 

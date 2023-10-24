@@ -17,6 +17,7 @@ struct LoginView: View {
                VStack(){
                     
                     Text("INFINITY TO-D∞")
+                         .foregroundColor(.white)
                          .font(.largeTitle)
                          .bold()
                     
@@ -35,15 +36,16 @@ struct LoginView: View {
                          } label: {
                               Text("Login")
                                    .font(.title)
-                                   .foregroundColor(Color.white)
-                                   .padding(.vertical, 16)
-                                   .padding(.horizontal, 30)
+                                   .fontWeight(.semibold)
+                                   .foregroundColor(.appNavyBlueColor)
+                                   .padding(.vertical, 12)
+                                   .padding(.horizontal, 20)
                                    .background(
-                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                             .fill(Color.appDarkMint)
+                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                             .fill(Color.white)
                                    )
                          }
-                         .padding(.top, 24)
+                         .padding(.top, 8)
                          .alert(isPresented: $viewModel.showWrongAlert) {
                               Alert(title: Text("Warning"),
                                     message: Text("Wrong email or password"),
@@ -63,13 +65,13 @@ struct LoginView: View {
           ZStack{
                Rectangle()
                     .trim(from: 0.0, to: 0.5)
-                    .foregroundStyle(.linearGradient(colors: [Color.appPurple, Color.appLightMint], startPoint: .bottom, endPoint: .topLeading))
+                    .foregroundStyle(.linearGradient(colors: [Color.appOceanBlue, Color.appLightBlue], startPoint: .bottom, endPoint: .topLeading))
                     .frame(maxWidth: .infinity)
                Rectangle()
                     .trim(from: 0.5, to: 1.0)
-                    .foregroundStyle(.linearGradient(colors: [Color.appLightMint,Color.appPurple], startPoint: .bottomLeading, endPoint: .top))
+                    .foregroundStyle(.linearGradient(colors: [.appLightBlue,.appOceanBlue], startPoint: .bottomLeading, endPoint: .top))
                     .frame(maxWidth: .infinity)
-                    
+               
           }
           .ignoresSafeArea()
      }
@@ -78,11 +80,5 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
      static var previews: some View {
           LoginView()
-               .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
-               .previewDisplayName("iPhone 14 Pro")
-          
-          LoginView()
-               .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
-               .previewDisplayName("iPhone SE")
      }
 }
