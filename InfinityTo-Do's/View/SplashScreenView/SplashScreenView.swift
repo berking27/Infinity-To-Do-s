@@ -20,7 +20,7 @@ struct SplashScreenView: View {
           
           ZStack{
                Rectangle()
-                    .foregroundStyle(.linearGradient(colors: [Color.black, Color.appPurple], startPoint: .top, endPoint: .bottom))
+                    .foregroundStyle(.linearGradient(colors: [Color.white, Color.appNavyBlueColor], startPoint: .top, endPoint: .bottom))
                     .ignoresSafeArea()
                VStack{
                     Group{
@@ -30,7 +30,7 @@ struct SplashScreenView: View {
                               .font(.system(size: 240))
                               
                     }
-                    .foregroundColor(.appDarkMint)
+                    .foregroundColor(.appNavyBlueColor)
                     Spacer()
                }
                
@@ -38,7 +38,7 @@ struct SplashScreenView: View {
                
                Rectangle()
                     .trim(from: trimFrom1, to: trimTo1)
-                    .foregroundStyle(.linearGradient(colors: [Color.appLightMint, Color.appPurple], startPoint: .bottom, endPoint: .topLeading))
+                    .foregroundStyle(.linearGradient(colors: [Color.appLightBlue, Color.appOceanBlue], startPoint: .bottom, endPoint: .topLeading))
                     .frame(maxWidth: .infinity)
                     .ignoresSafeArea()
                     .onAppear{
@@ -50,7 +50,7 @@ struct SplashScreenView: View {
                
                Rectangle()
                     .trim(from: trimFrom2, to: trimTo2)
-                    .foregroundStyle(.linearGradient(colors: [Color.appPurple,Color.appLightMint], startPoint: .bottomLeading, endPoint: .top))
+                    .foregroundStyle(.linearGradient(colors: [Color.appOceanBlue,Color.appLightBlue], startPoint: .bottomLeading, endPoint: .top))
                     .frame(maxWidth: .infinity)
                     .ignoresSafeArea()
                     .onAppear{

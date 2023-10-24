@@ -18,12 +18,16 @@ struct ToDoListView: View {
           self._items = FirestoreQuery(
                collectionPath: "users/\(userId)/todos"
           )
+          //Use this if NavigationBarTitle is with Large Font
+          UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+          //Use this if NavigationBarTitle is with displayMode = .inline
+          UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
      }
-     //Git version Control Test
      var body: some View {
           NavigationView {
                ZStack{
-                    bgView()
+                    MainBgView()
                     VStack{
                          List{
                               ForEach(items, id: \.id) { item in
@@ -53,7 +57,7 @@ struct ToDoListView: View {
                          } label: {
                               Image(systemName: isTapped ? "plus" : "infinity")
                                    .font(.system(size: 32))
-                                   .foregroundColor(.black)
+                                   .foregroundColor(.white)
                                    .padding()
                                    .rotationEffect(.degrees(isTapped ? 0 : 180))
                          }
@@ -66,11 +70,10 @@ struct ToDoListView: View {
           
      }
 }
-
-private func bgView() -> some View{
+func MainBgView() -> some View{
      ZStack{
           Rectangle()
-               .foregroundStyle(.linearGradient(colors: [Color.appLightMint,Color.appPurple], startPoint: .bottomLeading, endPoint: .top))
+               .foregroundStyle(.linearGradient(colors: [.appLightBlue,.appTeal,.appOceanBlue], startPoint: .top, endPoint: .bottomTrailing))
                .frame(maxWidth: .infinity)
                .ignoresSafeArea()
      }
