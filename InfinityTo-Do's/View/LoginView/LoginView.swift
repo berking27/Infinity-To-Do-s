@@ -37,7 +37,7 @@ struct LoginView: View {
                               Text("Login")
                                    .font(.title)
                                    .fontWeight(.semibold)
-                                   .foregroundColor(.appNavyBlueColor)
+                                   .foregroundColor(.appNavyBlue)
                                    .padding(.vertical, 12)
                                    .padding(.horizontal, 20)
                                    .background(
