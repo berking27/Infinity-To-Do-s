@@ -30,8 +30,8 @@ struct HomePageView: View {
                         }
                    }
                    .tabViewStyle(backgroundColor: .white,
-                                 itemColor: .black,
-                                 selectedItemColor: .appNavyBlueColor,
+                                 itemColor: .appNavyBlue,
+                                 selectedItemColor: .black,
                                  badgeColor: .red)
                    
               }

@@ -20,7 +20,7 @@ struct SplashScreenView: View {
           
           ZStack{
                Rectangle()
-                    .foregroundStyle(.linearGradient(colors: [Color.white, Color.appNavyBlueColor], startPoint: .top, endPoint: .bottom))
+                    .foregroundStyle(.linearGradient(colors: [Color.white, Color.appNavyBlue], startPoint: .top, endPoint: .bottom))
                     .ignoresSafeArea()
                VStack{
                     Group{
@@ -30,7 +30,7 @@ struct SplashScreenView: View {
                               .font(.system(size: 240))
                               
                     }
-                    .foregroundColor(.appNavyBlueColor)
+                    .foregroundColor(.appNavyBlue)
                     Spacer()
                }
                

@@ -56,7 +56,7 @@ struct NewItemView: View {
                          }
                          .padding(.horizontal, 24)
                          .padding(.vertical, 16)
-                         .background(Color.appNavyBlueColor)
+                         .background(Color.appNavyBlue)
                          .cornerRadius(8)
                          
                          

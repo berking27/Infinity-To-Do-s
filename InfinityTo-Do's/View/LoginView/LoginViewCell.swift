@@ -22,7 +22,7 @@ struct LoginViewCell: View {
                HStack{
                     if isSecureField{
                          SecureField(title, text: $text)
-                              .foregroundColor(.appNavyBlueColor)
+                              .foregroundColor(.appNavyBlue)
                               .textFieldStyle(.plain)
                               .autocapitalization(.none)
                          Image(systemName: systemImage)
@@ -30,7 +30,7 @@ struct LoginViewCell: View {
                               .foregroundColor(.appDarkPurple)
                     }else{
                          TextField(title, text: $text)
-                              .foregroundColor(.appNavyBlueColor)
+                              .foregroundColor(.appNavyBlue)
                               .textFieldStyle(.plain)
                               .autocapitalization(.none)
                          Image(systemName: systemImage)
