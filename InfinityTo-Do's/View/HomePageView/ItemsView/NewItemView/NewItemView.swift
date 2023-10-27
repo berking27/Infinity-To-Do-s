@@ -13,6 +13,7 @@ struct NewItemView: View {
      @Binding var newItemPresented: Bool
      
      
+     
      var body: some View {
           ZStack {
                bgRect()
@@ -32,16 +33,12 @@ struct NewItemView: View {
                                         .font(.system(size: 16).bold())
                               }
                               
-                              //                             ColorPicker("Color Picker",
-                              //                                         selection: $viewModel.color,
-                              //                                         supportsOpacity: false)
                          }
                          .frame(maxWidth: .infinity)
                          .padding(.horizontal, 40)
                          .padding(.vertical, 20)
                          .background(Color.appLightBlue.opacity(0.8))
                          .cornerRadius(4)
-                         
                          Button {
                               if viewModel.canSave{
                                    viewModel.save()
