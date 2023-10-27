@@ -13,7 +13,7 @@ struct LoginView: View {
      
      var body: some View {
           ZStack {
-               LoginBgView()
+               bgView()
                VStack(){
                     
                     Text("INFINITY TO-D∞")
@@ -60,6 +60,20 @@ struct LoginView: View {
                }
                
           }
+     }
+     private func bgView() -> some View{
+          ZStack{
+               Rectangle()
+                    .trim(from: 0.0, to: 0.5)
+                    .foregroundStyle(.linearGradient(colors: [Color.appOceanBlue, Color.appLightBlue], startPoint: .bottom, endPoint: .topLeading))
+                    .frame(maxWidth: .infinity)
+               Rectangle()
+                    .trim(from: 0.5, to: 1.0)
+                    .foregroundStyle(.linearGradient(colors: [.appLightBlue,.appOceanBlue], startPoint: .bottomLeading, endPoint: .top))
+                    .frame(maxWidth: .infinity)
+               
+          }
+          .ignoresSafeArea()
      }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ItemCellView.swift
+//  ToDoListItemView.swift
 //  InfinityTo-Do's
 //
 //  Created by Berkin Koca on 28.08.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ItemCellView: View {
+struct ToDoListItemView: View {
      
-     @StateObject var viewModel = ItemCellViewModel()
+     @StateObject var viewModel = ToDoListItemViewModel()
      let item: ToDoListItem
      
      
@@ -41,6 +41,6 @@ struct ItemCellView: View {
 
 struct ToDoListItemView_Previews: PreviewProvider {
      static var previews: some View {
-          ItemCellView(item: .init(id: "123", title: "Get Milk", isDone: false))
+          ToDoListItemView(item: .init(id: "123", title: "Get Milk", isDone: false))
      }
 }
