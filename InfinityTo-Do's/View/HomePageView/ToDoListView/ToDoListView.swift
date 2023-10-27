@@ -27,24 +27,20 @@ struct ToDoListView: View {
      var body: some View {
           NavigationView {
                ZStack{
-                    MainBgView()
+                    mainBgView()
                     VStack{
-                         List{
                               ForEach(items, id: \.id) { item in
-                                   ToDoListItemView(item: item)
-                                        .swipeActions{
-                                             Button(role: .destructive) {
-                                                  withAnimation(.linear(duration: 0.4)){
-                                                       viewModel.delete(id: item.id)
-                                                  }
-                                             } label :{
-                                                  Label("Delete", systemImage: "trash")
-                                             }
-                                        }
+//                                   NavigationLink(destination: NavigationLazyView(ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2"))){
+//                                        ToDoListCellView(item: item)
+//                                   }
+                                   NavigationLink(destination: ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2")) {
+                                        ToDoListCellView(item: item)
+                                   }
                               }
-                         }
-                         .listStyle(PlainListStyle())
+                         Spacer()
                     }
+                    .padding(.top)
+                    //This title will change depends on the name of list
                     .navigationTitle("To-Do-List")
                     .toolbar {
                          Button {
@@ -67,19 +63,8 @@ struct ToDoListView: View {
                     }
                }
           }
-          //123123
      }
 }
-func MainBgView() -> some View{
-     ZStack{
-          Rectangle()
-               .foregroundStyle(.linearGradient(colors: [.appLightBlue,.appTeal,.appOceanBlue], startPoint: .top, endPoint: .bottomTrailing))
-               .frame(maxWidth: .infinity)
-               .ignoresSafeArea()
-     }
-     .ignoresSafeArea()
-}
-
 
 
 
