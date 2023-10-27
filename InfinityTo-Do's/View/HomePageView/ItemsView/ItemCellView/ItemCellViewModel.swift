@@ -1,5 +1,5 @@
 //
-//  ToDoListItemViewModel.swift
+//  ItemCellViewModel.swift
 //  InfinityTo-Do's
 //
 //  Created by Berkin Koca on 29.08.2023.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ToDoListItemViewModel: ObservableObject{
+class ItemCellViewModel: ObservableObject{
      init() {}
      
      func toggle(item: ToDoListItem){

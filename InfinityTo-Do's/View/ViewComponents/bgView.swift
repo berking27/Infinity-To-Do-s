@@ -8,28 +8,25 @@
 import Foundation
 import SwiftUI
 
-func LoginBgView() -> some View{
+func LoginBgView() -> some View {
      ZStack{
           Rectangle()
                .trim(from: 0.0, to: 0.5)
-               .foregroundStyle(.linearGradient(colors: [Color.appPurple, Color.appLightMint], startPoint: .bottom, endPoint: .topLeading))
+               .foregroundStyle(.linearGradient(colors: [Color.appOceanBlue, Color.appLightBlue], startPoint: .bottom, endPoint: .topLeading))
                .frame(maxWidth: .infinity)
           Rectangle()
                .trim(from: 0.5, to: 1.0)
-               .foregroundStyle(.linearGradient(colors: [Color.appLightMint,Color.appPurple], startPoint: .bottomLeading, endPoint: .top))
+               .foregroundStyle(.linearGradient(colors: [.appLightBlue,.appOceanBlue], startPoint: .bottomLeading, endPoint: .top))
                .frame(maxWidth: .infinity)
-               
+          
      }
      .ignoresSafeArea()
 }
 
+func mainBgView() -> some View {
+     ZStack{
+          LinearGradient(gradient: Gradient(colors: [.appLightBlue, .appTeal, .appOceanBlue]), startPoint: .top, endPoint: .bottomTrailing)
+               .ignoresSafeArea()
+     }
+}
 
-//func MainBgView() -> some View{
-//     ZStack{
-//          Rectangle()
-//               .foregroundStyle(.linearGradient(colors: [Color.appLightMint,Color.appPurple], startPoint: .bottomLeading, endPoint: .top))
-//               .frame(maxWidth: .infinity)
-//               .ignoresSafeArea()
-//     }
-//     .ignoresSafeArea()
-//}
