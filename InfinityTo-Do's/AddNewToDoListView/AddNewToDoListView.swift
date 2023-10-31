@@ -10,79 +10,77 @@ import SwiftUI
 struct AddNewToDoListView: View {
      
      @StateObject var viewModel = AddNewToDoListViewModel()
-     @Binding var newToDoPresented: Bool
+     @Binding var newItemPresented: Bool
      
-    var body: some View {
-         ZStack {
-              bgRect()
-              VStack{
-                   Text("New To-Do List")
-                        .font(.system(size: 40))
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding()
-                   
-                   VStack{
-                        Group{
-                             HStack{
-                                  TextField("To-Do Name", text: $viewModel.title)
-                                       .foregroundColor(.white)
-                                       .textFieldStyle(.plain)
-                             }
-                             
-//                             ColorPicker("Color Picker",
-//                                         selection: $viewModel.color,
-//                                         supportsOpacity: false)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 40)
-                        .padding(.vertical, 20)
-                        .background(Color.appDarkMint)
-                        .cornerRadius(4)
-                        
-                        Button {
-                             if viewModel.canSave{
-                                  viewModel.save()
-                                  newToDoPresented = false
-                             } else{
-                                  viewModel.showAlert = true
-                             }
-                        } label: {
-                             Text("Add New To-Do-List")
-                                  .foregroundColor(.white)
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 16)
-                        .background(Color.appPurple)
-                        .cornerRadius(8)
-                        
-
-                   }
-                   .padding(.horizontal, 16)
-                   .padding()
-              }
-              .alert(isPresented: $viewModel.showAlert) {
-                   Alert(title: Text("Error"),
-                   message: Text("Please Fill All fields"))
-              }
-         }
-    }
+     
+     
+     var body: some View {
+          ZStack {
+               bgRect()
+               VStack{
+                    Text("Add New To Do's")
+                         .font(.system(size: 40))
+                         .foregroundColor(.white)
+                         .bold()
+                         .padding()
+                    
+                    VStack{
+                         Group{
+                              HStack{
+                                   TextField("What To-Do", text: $viewModel.title)
+                                        .foregroundColor(.white)
+                                        .textFieldStyle(.plain)
+                                        .font(.system(size: 16).bold())
+                              }
+                              
+                         }
+                         .frame(maxWidth: .infinity)
+                         .padding(.horizontal, 40)
+                         .padding(.vertical, 20)
+                         .background(Color.appLightBlue.opacity(0.8))
+                         .cornerRadius(4)
+                         Button {
+                              if viewModel.canSave{
+                                   viewModel.save()
+                                   newItemPresented = false
+                              } else{
+                                   viewModel.showAlert = true
+                              }
+                         } label: {
+                              Text("Add New To Do's")
+                                   .foregroundColor(.white)
+                                   .bold()
+                         }
+                         .padding(.horizontal, 24)
+                         .padding(.vertical, 16)
+                         .background(Color.appNavyBlue)
+                         .cornerRadius(8)
+                         
+                         
+                    }
+                    .padding(.horizontal, 16)
+                    .padding()
+               }
+               .alert(isPresented: $viewModel.showAlert) {
+                    Alert(title: Text("Error"),
+                          message: Text("Please Fill All fields"))
+               }
+          }
+     }
      
      private func bgRect() -> some View{
           Rectangle()
-               .foregroundStyle(.linearGradient(colors: [Color.appPurple,Color.black, Color.appPurple], startPoint: .top, endPoint: .bottom))
+               .foregroundStyle(.linearGradient(colors: [Color.appLightBlue,Color.black, Color.appLightBlue], startPoint: .top, endPoint: .bottom))
                .frame(maxWidth: .infinity)
                .ignoresSafeArea()
-
+          
      }
 }
 
-struct AddNewToDoList_Previews: PreviewProvider {
-    static var previews: some View {
-         AddNewToDoListView(newToDoPresented: Binding(get: {
-              return true
-         }, set: { _ in
-              
-         }))
-    }
+#Preview {
+     AddNewToDoListView(newItemPresented: Binding(get: {
+          return true
+     }, set: { _ in
+          
+     }))
 }

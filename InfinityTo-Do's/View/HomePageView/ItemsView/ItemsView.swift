@@ -14,14 +14,18 @@ struct ItemsView: View {
      @StateObject var viewModel = ItemsViewModel()
      @FirestoreQuery var items: [ToDoListItem]
      @Environment(\.dismiss) var dismiss
+     let listId: String
      
-     init(userId: String){
+     init(userId: String, listId: String){
           self._items = FirestoreQuery(
-               collectionPath: "users/\(userId)/todos"
+               collectionPath: "users/\(userId)/todos/\(listId)/items"
           )
+          
+          self.listId = listId
+          
           //Use this if NavigationBarTitle is with Large Font
           UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
+          
           //Use this if NavigationBarTitle is with displayMode = .inline
           UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
      }
@@ -30,14 +34,15 @@ struct ItemsView: View {
           NavigationView {
                ZStack{
                     mainBgView()
+                    
                     VStack{
                          List{
                               ForEach(items, id: \.id) { item in
-                                   ItemCellView(item: item)
+                                   ItemCellView(item: item, listId: listId)
                                         .swipeActions{
                                              Button(role: .destructive) {
                                                   withAnimation(.linear(duration: 0.4)){
-                                                       //
+                                                       viewModel.delete(id: item.id, listId: listId)
                                                   }
                                              } label :{
                                                   Label("Delete", systemImage: "trash")
@@ -66,7 +71,7 @@ struct ItemsView: View {
                                         .rotationEffect(.degrees(isTapped ? 0 : 180))
                               }
                               .sheet(isPresented: $viewModel.showAddNewItem) {
-                                   NewItemView(newItemPresented: $viewModel.showAddNewItem)
+                                   NewItemView(newItemPresented: $viewModel.showAddNewItem, listId: listId)
                               }
                          }
                          ToolbarItem(placement: .navigationBarLeading) {
@@ -82,6 +87,7 @@ struct ItemsView: View {
                               }
                          }
                     }
+                    
                }
           }
           .navigationBarBackButtonHidden()
@@ -90,5 +96,5 @@ struct ItemsView: View {
 
 
 #Preview {
-     ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2")
+     ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2", listId: "F7157CFD-B279-4CBE-A118-E5BF3BAAB5A1")
 }

@@ -11,6 +11,7 @@ struct NewItemView: View {
      
      @StateObject var viewModel = NewItemViewModel()
      @Binding var newItemPresented: Bool
+     let listId: String
      
      
      
@@ -41,7 +42,7 @@ struct NewItemView: View {
                          .cornerRadius(4)
                          Button {
                               if viewModel.canSave{
-                                   viewModel.save()
+                                   viewModel.save(listId: listId)
                                    newItemPresented = false
                               } else{
                                    viewModel.showAlert = true
@@ -82,5 +83,5 @@ struct NewItemView: View {
           return true
      }, set: { _ in
           
-     }))
+     }), listId: "")
 }

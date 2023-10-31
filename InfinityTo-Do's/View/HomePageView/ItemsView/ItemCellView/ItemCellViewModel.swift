@@ -11,11 +11,11 @@ import Foundation
 class ItemCellViewModel: ObservableObject{
      init() {}
      
-     func toggle(item: ToDoListItem){
+     func toggle(item: ToDoListItem, listId: String){
           var itemCopy = item
           itemCopy.setDone(!item.isDone)
           
-          FirebaseManager.shared.toggleToDos(itemCopy: itemCopy)
+          FirebaseManager.shared.toggleToDos(itemCopy: itemCopy, listId: listId)
      }
      
 }

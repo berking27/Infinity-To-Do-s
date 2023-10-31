@@ -13,4 +13,8 @@ class ItemsViewModel: ObservableObject{
      
      init() {}
      
+     func delete(id: String, listId: String){
+          FirebaseManager.shared.deleteItems(id: id, listId: listId)
+     }
+     
 }

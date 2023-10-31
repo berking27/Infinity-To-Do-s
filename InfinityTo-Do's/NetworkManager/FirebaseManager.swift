@@ -12,8 +12,6 @@ import FirebaseFirestore
 
 class FirebaseManager: NetworkManagerProtocol{
      
-     
-     
      static let shared = FirebaseManager()
      
      let db = Firestore.firestore()
@@ -64,19 +62,22 @@ class FirebaseManager: NetworkManagerProtocol{
           Log.info("User successfully Sign out")
      }
      
-     func deleteItems(id: String){
+     func deleteItems(id: String, listId: String){
           guard let userId = userSession?.uid else{
                Log.error("NO USER IF FOUND!")
                return
           }
+          
           db.collection("users")
               .document(userId)
               .collection("todos")
+              .document(listId)
+              .collection("items")
               .document(id)
               .delete()
      }
      
-     func saveToDoS(title: String, isDone: Bool){
+     func saveToDoS(title: String){
           
           //getCurrent user id
           guard let uid = FirebaseManager.shared.userSession?.uid else {
@@ -85,9 +86,8 @@ class FirebaseManager: NetworkManagerProtocol{
           
           //Create Model
           let newId = UUID().uuidString
-          let newItem = ToDoListItem(id: newId
-                                     ,title: title,
-                                     isDone: false)
+          let newItem = ToDoLists(id: newId
+                                     ,title: title)
           
           //Save model
           db.collection("users")
@@ -98,13 +98,37 @@ class FirebaseManager: NetworkManagerProtocol{
           
      }
      
-     func toggleToDos(itemCopy: ToDoListItem){
+     func saveItems(title: String, isDone: Bool, listId: String){
+          //getCurrent user id
+          guard let uid = FirebaseManager.shared.userSession?.uid else {
+               return
+          }
+          
+          //Create Model
+          let newId = UUID().uuidString
+          let newItem = ToDoListItem(id: newId
+                                     ,title: title, isDone: isDone)
+          
+          //Save model
+          db.collection("users")
+               .document(uid)
+               .collection("todos")
+               .document(listId)
+               .collection("items")
+               .document(newId)
+               .setData(newItem.asDictionary())
+     }
+     
+     
+     func toggleToDos(itemCopy: ToDoListItem, listId: String){
           guard let uid = userSession?.uid else{
                return
           }
           db.collection("users")
                .document(uid)
                .collection("todos")
+               .document(listId)
+               .collection("items")
                .document(itemCopy.id)
                .setData(itemCopy.asDictionary())
      }

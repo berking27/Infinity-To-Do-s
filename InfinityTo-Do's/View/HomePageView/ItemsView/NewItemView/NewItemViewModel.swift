@@ -12,13 +12,14 @@ class NewItemViewModel: ObservableObject{
      @Published var title = ""
      @Published var isDone = false
      @Published var showAlert = false
-     @Published var color: UIColor = .white
-     func save(){
+     
+     
+     func save(listId: String){
           guard canSave else{
                return
           }
           
-          FirebaseManager.shared.saveToDoS(title: title, isDone: isDone)
+          FirebaseManager.shared.saveItems(title: title, isDone: isDone, listId: listId)
      }
      var canSave: Bool{
           guard !title.trimmingCharacters(in: .whitespaces).isEmpty else{

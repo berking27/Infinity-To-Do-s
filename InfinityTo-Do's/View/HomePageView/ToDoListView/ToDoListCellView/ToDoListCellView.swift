@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToDoListCellView: View {
      @StateObject var viewModel = ItemCellViewModel()
-     let item: ToDoListItem
+     let item: ToDoLists
      
      var body: some View {
           
@@ -38,5 +38,5 @@ struct ToDoListCellView: View {
 }
 
 #Preview {
-     ToDoListCellView( item: .init(id: "123", title: "Get Milk", isDone: false))
+     ToDoListCellView( item: .init(id: "123", title: "Get Milk"))
 }

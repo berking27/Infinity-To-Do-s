@@ -15,5 +15,7 @@ protocol NetworkManagerProtocol: ObservableObject{
      
      func fetchUser(completion: @escaping (User?) -> Void)
      
-     func saveToDoS(title: String, isDone: Bool)
+     func saveToDoS(title: String)
+     
+     func saveItems(title: String, isDone: Bool, listId: String)
 }

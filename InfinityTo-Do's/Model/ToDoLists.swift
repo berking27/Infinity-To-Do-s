@@ -12,5 +12,4 @@ struct ToDoLists: Codable, Identifiable{
      
      let id: String
      let title: String
-     let items: [ToDoListItem]
 }

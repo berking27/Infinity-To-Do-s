@@ -19,7 +19,7 @@ class AddNewToDoListViewModel: ObservableObject{
                return
           }
           
-          FirebaseManager.shared.saveToDoS(title: title, isDone: isDone)
+          FirebaseManager.shared.saveToDoS(title: title)
                
      }
      

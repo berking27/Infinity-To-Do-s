@@ -11,12 +11,12 @@ struct ItemCellView: View {
      
      @StateObject var viewModel = ItemCellViewModel()
      let item: ToDoListItem
-     
+     let listId: String
      
      var body: some View {
           HStack{
                Button {
-                    viewModel.toggle(item: item)
+                    viewModel.toggle(item: item,listId: listId)
                } label: {
                     Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                          .font(.system(size: 24).bold())
@@ -41,6 +41,6 @@ struct ItemCellView: View {
 
 struct ToDoListItemView_Previews: PreviewProvider {
      static var previews: some View {
-          ItemCellView(item: .init(id: "123", title: "Get Milk", isDone: false))
+          ItemCellView(item: .init(id: "123", title: "Get Milk", isDone: false), listId: "")
      }
 }

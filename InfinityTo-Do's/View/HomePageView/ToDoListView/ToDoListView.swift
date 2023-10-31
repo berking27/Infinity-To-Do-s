@@ -8,58 +8,60 @@
 import SwiftUI
 import FirebaseFirestoreSwift
 
+let navBarAppearence = UINavigationBarAppearance()
+
 struct ToDoListView: View {
      
      @State private var isTapped = false
      @StateObject var viewModel = ToDoListViewModel()
-     @FirestoreQuery var items: [ToDoListItem]
+     @FirestoreQuery var items: [ToDoLists]
      
      init(userId: String){
           self._items = FirestoreQuery(
                collectionPath: "users/\(userId)/todos"
           )
-          //Use this if NavigationBarTitle is with Large Font
-          UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-          //Use this if NavigationBarTitle is with displayMode = .inline
+          //MARK: - navBarAppearence
+          UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
           UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+          
      }
      var body: some View {
           NavigationView {
                ZStack{
                     mainBgView()
-                    VStack{
+                    ScrollView{
+                         VStack{
                               ForEach(items, id: \.id) { item in
-//                                   NavigationLink(destination: NavigationLazyView(ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2"))){
-//                                        ToDoListCellView(item: item)
-//                                   }
-                                   NavigationLink(destination: ItemsView(userId: "L2YxiXfwKzLcCNMKk9bAuSdDBzc2")) {
-                                        ToDoListCellView(item: item)
+                                   if let userId = FirebaseManager.shared.userSession?.uid{
+                                        NavigationLink(destination: ItemsView(userId: userId, listId: item.id)) {
+                                             ToDoListCellView(item: item)
+                                        }
                                    }
                               }
-                         Spacer()
-                    }
-                    .padding(.top)
-                    //This title will change depends on the name of list
-                    .navigationTitle("To-Do-List")
-                    .toolbar {
-                         Button {
-                              withAnimation {
-                                   isTapped.toggle()
-                              }
-                              DispatchQueue.main.async {
-                                   viewModel.showAddNewItem = true
-                              }
-                         } label: {
-                              Image(systemName: isTapped ? "plus" : "infinity")
-                                   .font(.system(size: 32))
-                                   .foregroundColor(.white)
-                                   .padding()
-                                   .rotationEffect(.degrees(isTapped ? 0 : 180))
+                              Spacer()
                          }
-                    }
-                    .sheet(isPresented: $viewModel.showAddNewItem) {
-                         NewItemView(newItemPresented: $viewModel.showAddNewItem)
+                         .padding(.top)
+                         //This title will change depends on the name of list
+                         .navigationTitle("To-Do-List")
+                         .toolbar {
+                              Button {
+                                   withAnimation {
+                                        isTapped.toggle()
+                                   }
+                                   DispatchQueue.main.async {
+                                        viewModel.showAddNewItem = true
+                                   }
+                              } label: {
+                                   Image(systemName: isTapped ? "plus" : "infinity")
+                                        .font(.system(size: 32))
+                                        .foregroundColor(.black)
+                                        .padding()
+                                        .rotationEffect(.degrees(isTapped ? 0 : 180))
+                              }
+                         }
+                         .sheet(isPresented: $viewModel.showAddNewItem) {
+                              AddNewToDoListView(newItemPresented: $viewModel.showAddNewItem)
+                         }
                     }
                }
           }
