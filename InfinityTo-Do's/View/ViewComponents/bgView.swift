@@ -27,6 +27,7 @@ func mainBgView() -> some View {
      ZStack{
           LinearGradient(gradient: Gradient(colors: [.appLightBlue, .appTeal, .appOceanBlue]), startPoint: .top, endPoint: .bottomTrailing)
                .ignoresSafeArea()
+          
      }
 }
 
